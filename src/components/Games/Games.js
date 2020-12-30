@@ -1,7 +1,9 @@
 import React from 'react'
 import { StyleSheet, Text, View, ImageBackground, Button, TouchableOpacity } from 'react-native'
+import {getJustDate, getJustTime} from "../../axios/dateFormatter"
 
 export const Games = ({item, onOpen}) => {
+  console.log(item)
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={() => onOpen(item)}>
       <View style={styles.block}>
@@ -12,15 +14,15 @@ export const Games = ({item, onOpen}) => {
             imageStyle={{ borderRadius: 10 }}
           />
           <View style={styles.textWrapper}>
-            <Text style={styles.text}>21:00</Text>
+            <Text style={styles.text}>{getJustTime(item.date)}</Text>
           </View>
           <View style={styles.info}>
-            <Text style={styles.text}>24.12.2020</Text>
+            <Text style={styles.text}>{getJustDate(item.date)}</Text>
             <Text style={styles.text}>{item.name}</Text>
-            <Text style={styles.text}>Вступили 0/100</Text>
+            <Text style={styles.text}>Вступили {item.player_list.length}/100</Text>
           </View>
           <TouchableOpacity style={styles.btn} onPress={() => onOpen(item)}>
-                <Text style={{color: '#000'}}>Подробнее</Text>
+            <Text style={{color: '#000'}}>Подробнее</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -70,9 +72,9 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     textTransform: 'uppercase',
-    fontFamily: 'open-bold',
+    // fontFamily: 'open-bold',
   },
   title: {
-    fontFamily: 'open-bold'
+    // fontFamily: 'open-bold'
   }
 })

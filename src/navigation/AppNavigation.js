@@ -1,8 +1,10 @@
 import React from 'react'
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
+import  { createDrawerNavigator } from 'react-navigation-drawer'
 import { Platform } from 'react-native'
 import { MainScreen } from '../screens/MainScreen'
+import { AnotherNavigator } from '../navigation/AnotherNavigation'
 import { GamesScreen } from '../screens/GamesScreen'
 import { GameCardScreen } from '../screens/GameCardScreen'
 import { COLORS } from '../assets/colors/colors'
@@ -82,35 +84,49 @@ const AppNavigator = createBottomTabNavigator(
       screen: _MainNavigator,
       navigationOptions: {
         title: 'Главное',
-        tabBarIcon: <AntDesign name="home" size={24} color={Platform.OS === 'android' ? 'black': 'black'} />
-      }
+        tabBarIcon: info => (
+        <AntDesign 
+          name="home" 
+          size={24} 
+          color={info.tintColor} /> 
+        )}
     },
     Games: {
       screen: _GamesNavigator,
       navigationOptions: {
-        tabBarIcon: <AntDesign name="switcher" size={24} color={Platform.OS === 'android' ? 'black': 'black'} />
-      }
+        title: 'Турниры',
+        tabBarIcon: info => (
+        <AntDesign 
+          name="switcher" 
+          size={24} 
+          color={info.tintColor} />
+        )}
     },
-    Profle: {
+    Profile: {
       screen: _ProfileNavigator,
       navigationOptions: {
-        tabBarIcon: <MaterialCommunityIcons name="face-profile" size={24} color={Platform.OS === 'android' ? 'black': 'black'} />
-      }
-    },
+        title: 'Профиль',
+        tabBarIcon: info => (
+        <MaterialCommunityIcons 
+          name="face-profile" 
+          size={24} 
+          color={info.tintColor} /> 
+        )}
+    }
   },
   {
-    initialRouteName: 'Main',
+    initialRouteName: 'Profile',
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: Platform.OS === 'android' ? COLORS.HEADER_COLOR : '#fff'
       },
       headerTintColor: Platform.OS === 'android' ? '#fff' : COLORS.HEADER_COLOR
     },
-    // tabBarOptions: {
-    //   style: {
-    //       backgroundColor: Platform.OS === 'android' ? COLORS.HEADER_COLOR : '#fff',
-    //   },
-    // },
+    tabBarOptions: {
+      style: {
+          backgroundColor: Platform.OS === 'android' ? COLORS.BODY_COLOR : '#fff',
+      },
+    },
   }
 )
 
