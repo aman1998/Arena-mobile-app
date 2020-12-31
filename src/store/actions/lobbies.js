@@ -70,18 +70,21 @@ export const enterGameActionCreator = (id, pk, balance, priceGame) => dispatch =
     .catch(e => console.log(e))
 }
 
-export const setOneLobbyActionCreator = (id, setLoading, setLobby, setError, setSuccess) => dispatch => {
-  dispatch(isPlayed(true))
-  axios.get(`/lobby/rates/${id}/`)
+// export const setOneLobbyActionCreator = (id, setLoading, setLobby, setError, setSuccess) => dispatch => {
+  export const setOneLobbyActionCreator = (itemId, setLobby, setLoading, setSuccess, setFailed) => dispatch => {
+  // dispatch(isPlayed(true))
+  setLoading(true)
+  axios.get(`/lobby/rates/${itemId}/`)
     .then(({data}) => {
       setLoading(false)
       setSuccess(true)
       setLobby(data)
-      dispatch(setPlayers(data.player_list))
-      dispatch(setLoadingAction(false))
+      console.log(data)
+      // dispatch(setPlayers(data.player_list))
+      // dispatch(setLoadingAction(false))
     })
     .catch(() => {
       setLoading(false)
-      setError(true)
+      setFailed(true)
     })
 }

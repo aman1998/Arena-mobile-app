@@ -28,7 +28,7 @@ const _SupportNavigator = createStackNavigator({
   Support: {
     screen: SupportScreen,
     navigationOptions: {
-      title: 'Тех-поддержка'
+      title: 'Техподдержка'
     }
   }
 })
@@ -64,7 +64,7 @@ export const AnotherNavigator = createDrawerNavigator({
   Support: {
     screen: _SupportNavigator,
     navigationOptions: {
-      title: 'Тех-поддержка'
+      title: 'Техподдержка'
     }
   },
 })

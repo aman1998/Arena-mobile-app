@@ -2,20 +2,8 @@ import React from 'react'
 import { Button, TextInput, View, StyleSheet, Text, ImageBackground, Alert} from 'react-native'
 import { useDispatch } from 'react-redux'
 import { Formik } from 'formik'
-import { COLORS } from '../assets/colors/colors'
-import * as SecureStore from 'expo-secure-store'
 import { fetchLoginActionCreator2 } from "../store/actions/profile";
 
-// const setToken = async (token) => {
-//   await SecureStore.setItemAsync('secure_token', token);
-// };
-
-// const getToken = async () => {
-//   return await SecureStore.getItemAsync('secure_token');
-// };
-
-// setToken('#your_secret_token');
-// getToken().then(token => console.log(token)); 
 const getAlert = () =>
     Alert.alert(
       "Ошибка входа",
@@ -25,14 +13,14 @@ const getAlert = () =>
       ],
       { cancelable: false }
     );
- export const Auth = props => {
+ export const SignUp = props => {
   const dispatch = useDispatch()
 
  return (
   <Formik
     initialValues={{ 
       phone: '',
-      password: '' 
+      password: ''
     }}
     onSubmit={values => {
       console.log(values)

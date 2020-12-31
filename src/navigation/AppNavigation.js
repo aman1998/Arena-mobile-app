@@ -5,13 +5,16 @@ import  { createDrawerNavigator } from 'react-navigation-drawer'
 import { Platform } from 'react-native'
 import { MainScreen } from '../screens/MainScreen'
 import { AnotherNavigator } from '../navigation/AnotherNavigation'
+import { InstructionScreen } from '../screens/InstructionScreen'
+import { RulesScreen } from '../screens/RulesScreen.'
 import { GamesScreen } from '../screens/GamesScreen'
 import { GameCardScreen } from '../screens/GameCardScreen'
 import { COLORS } from '../assets/colors/colors'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { ProfileScreen } from '../screens/ProfileScreen'
 import { AntDesign } from '@expo/vector-icons'
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+
 
 const _MainNavigator = createStackNavigator(
   {
@@ -66,6 +69,18 @@ const _ProfileNavigator = createStackNavigator(
       navigationOptions: {
         title: 'Профиль'
       }
+    },
+    Instruction: {
+      screen: InstructionScreen,
+      navigationOptions: {
+        title: 'Инструкция'
+      }
+    },
+    Rules: {
+      screen: RulesScreen,
+      navigationOptions: {
+        title: 'Правила игры'
+      }
     }
   },
   {
@@ -115,7 +130,7 @@ const AppNavigator = createBottomTabNavigator(
     }
   },
   {
-    initialRouteName: 'Profile',
+    initialRouteName: 'Games',
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: Platform.OS === 'android' ? COLORS.HEADER_COLOR : '#fff'

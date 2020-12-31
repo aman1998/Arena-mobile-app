@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, ImageBackground, Button, TouchableOpacity } fro
 import {getJustDate, getJustTime} from "../../axios/dateFormatter"
 
 export const Games = ({item, onOpen}) => {
-  console.log(item)
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={() => onOpen(item)}>
       <View style={styles.block}>

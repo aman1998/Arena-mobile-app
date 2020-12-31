@@ -17,5 +17,5 @@ export const Authentication = () => {
     }
   }, [token])
 
-  return isLog === false ? <AppNavigation /> :  <Auth />
+  return isLog === true ? <AppNavigation /> :  <Auth />
 }

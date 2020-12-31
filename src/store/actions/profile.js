@@ -52,12 +52,15 @@ export const fetchProfileActionCreator = (token) => dispatch => {
     })
 }
 
-export const fetchLoginActionCreator2 = ({phone, password}) => dispatch => {
+export const fetchLoginActionCreator2 = ({phone, password}, getAlert) => dispatch => {
   axios.post('/login/',
     {phone, password}
   )
     .then( response => {
       dispatch(setToken(`Token ${response.data.token}`)) 
+    })
+    .catch((e) => {
+      getAlert()
     })
 }
 
